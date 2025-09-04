@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace MAUI_App;
 
 public partial class SecondPage : ContentPage
@@ -17,8 +19,7 @@ public partial class SecondPage : ContentPage
     private void LoadPreferenceKeys()
     {
         // Retrieve all keys from Preferences  
-        var keys_string = Preferences.Get("favo", "");
-        var keys = System.Text.Json.JsonSerializer.Deserialize<List<FavoritesItem>>(keys_string)?.Select(item => item.Url) ?? Enumerable.Empty<string>();
+        var keys = FavoritesManager.getUrls();
 
         // Create a VerticalStackLayout to hold the buttons  
         linksStackLay.Children.Clear();

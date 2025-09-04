@@ -28,6 +28,7 @@ namespace MAUI_App
             MainWebView.Source = (string)Url;
             Append_History(Url);
             NavigatedTo += MainPage_NavigatedTo;
+            UpdateFavoriteButtonIcon();
            
         }
         private void Append_History(string url)
@@ -90,10 +91,9 @@ namespace MAUI_App
             var url = UrlInput.Text;
             if (Preferences.ContainsKey("favo"))
             {
-                var json = Preferences.Get("favo", "{}");
-                var items = JsonSerializer.Deserialize<List<FavoritesItem>>(json) ?? new List<FavoritesItem>();
+                var urls = FavoritesManager.getUrls();
 
-                var existingItem = items.FirstOrDefault(i => i.Url == url);
+                var existingItem = urls.FirstOrDefault(i => i == url);
                 faviBtn.Text = existingItem != null ? "★" : "☆"; // Filled star for favorite, non-filled for not favorite
             }
             else
@@ -105,35 +105,8 @@ namespace MAUI_App
         private void faviBtn_Clicked(object sender, EventArgs e)
         {
             var url = UrlInput.Text;
-            var item = new FavoritesItem { Url = url };
-            var items = new List<FavoritesItem>();
 
-            Debug.WriteLine("Add/Remove favorite button clicked");
-            if (Preferences.ContainsKey("favo"))
-            {
-                var json = Preferences.Get("favo", "{}");
-                items = JsonSerializer.Deserialize<List<FavoritesItem>>(json) ?? new List<FavoritesItem>();
-
-                var existingItem = items.FirstOrDefault(i => i.Url == url);
-                if (existingItem != null)
-                {
-                    items.Remove(existingItem);
-                    Preferences.Set("favo", JsonSerializer.Serialize(items));
-                    Debug.WriteLine($"Removed from favorites: {url}");
-                }
-                else
-                {
-                    items.Add(item);
-                    Preferences.Set("favo", JsonSerializer.Serialize(items));
-                    Debug.WriteLine($"Added to favorites: {url}");
-                }
-            }
-            else
-            {
-                items.Add(item);
-                Preferences.Set("favo", JsonSerializer.Serialize(items));
-                Debug.WriteLine($"Added to favorites: {url}");
-            }
+            FavoritesManager.Add_Key(url); 
 
             UpdateFavoriteButtonIcon(); // Update the button icon after adding/removing favorite
         }
