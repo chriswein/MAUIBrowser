@@ -1,4 +1,5 @@
 ﻿# 🖥️ Simpler Browser mit .NET MAUI
+![Preview](./preview.png)
 
 Ein minimaler Webbrowser, gebaut mit [`.NET MAUI`](https://learn.microsoft.com/dotnet/maui/).  
 Das Projekt zeigt, wie man mit wenig Code einen funktionalen Browser mit Adresszeile und Navigation erstellt.
