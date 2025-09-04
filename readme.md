@@ -7,6 +7,7 @@ Das Projekt zeigt, wie man mit wenig Code einen funktionalen Browser mit Adressz
 ##  Features
 - Eingabe einer URL und Laden der Webseite
 - Vor- und Zurück-Navigation
+- Favoriten
 - Plattformübergreifend (Windows, macOS, Android, iOS)
 
 ##  Showcase
