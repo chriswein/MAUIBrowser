@@ -9,6 +9,7 @@ Das Projekt zeigt, wie man mit wenig Code einen funktionalen Browser mit Adressz
 - Vor- und Zurück-Navigation
 - Favoriten
 - Plattformübergreifend (Windows, macOS, Android, iOS)
+- QR Code export für Links
 
 ##  Showcase
 
