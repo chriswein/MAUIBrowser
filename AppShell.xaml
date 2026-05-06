@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MAUI_App.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MAUI_App"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False"
+    Title="Browser Showcase" >
+    <FlyoutItem Title="Menu">
+        <ShellContent
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" Title="Browser" x:Name="MainPageGeneral" />
+    
+    <ShellContent
+        ContentTemplate="{DataTemplate local:SecondPage}"
+        Route="SecondPage" Title="Favorites" />
+        </FlyoutItem>
+
+</Shell>
